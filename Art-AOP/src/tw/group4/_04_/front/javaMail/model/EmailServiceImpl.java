@@ -83,7 +83,7 @@ public class EmailServiceImpl {
 			
 			FileSystemResource file = new FileSystemResource(new File(pathToAttachment));
 			
-			helper.addAttachment("Invoice.jpg", file);
+			helper.addAttachment("電子票券.jpg", file);
 
 			emailSender.send(message);
 
@@ -116,8 +116,8 @@ public class EmailServiceImpl {
 		String detail="http://localhost:8080/Art/04/SearchOrder.ctrl";
 		//寄訂單詳細mail
 		
-		QRCodeToolTest qrcodetool =new QRCodeToolTest();
-		qrcodetool.QRCode(shoppingcart);
+//		QRCodeToolTest qrcodetool =new QRCodeToolTest();
+//		qrcodetool.QRCode(shoppingcart);
 		
 		String to =  shoppingcart.getEMAIL();
 		String subject = "訂單編號"+shoppingcart.getORDERID()+"購物詳細";
@@ -395,8 +395,9 @@ public class EmailServiceImpl {
 		
 			
 				
-		String pathToAttachment = "C:\\iii\\HibernateWorkspace\\Art-AOP\\QRcodeOutput\\QRCode\\"+shoppingcart.getORDERID()+".png";	
-		emailServiceImpl.sendMessageWithAttachmentTEST(to, subject, text, pathToAttachment);
+//		String pathToAttachment = "/images/04/QRcodeOutput/"+shoppingcart.getORDERID()+".png";	
+		String pathToAttachment = "C:\\iii\\HibernateWorkspace\\Art-AOP\\QRcodeOutput\\"+shoppingcart.getORDERID()+".png";	
+		sendMessageWithAttachmentTEST(to, subject, text, pathToAttachment);
 		System.out.println("mail已寄送");
 	}
 	

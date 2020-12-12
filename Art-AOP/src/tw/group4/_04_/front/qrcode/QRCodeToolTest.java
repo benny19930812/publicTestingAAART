@@ -17,9 +17,14 @@ import tw.group4._04_.front.shopcart.model.Shoppingcart;
 public class QRCodeToolTest {
 	public void QRCode(Shoppingcart shoppingcart) throws WriterException, IOException, NotFoundException {
 		// 二維碼字串
-				String qrCodeData = shoppingcart.getNAME()+"QR票券";
+				String qrCodeData = 
+						"節目名稱："+shoppingcart.getTITLE()+"電子票券\n\r"
+						+ "票種："+shoppingcart.getTICKETCATEGORY()+"\n\r"
+						+ "數量："+shoppingcart.getTICKET_NUM()+"\n\r"
+						+ "座位編號："+shoppingcart.getSeatstring();
 		// 二維碼名稱
-				String filePath = "QRcodeOutput/"+shoppingcart.getORDERID()+".png";
+//				String filePath = "/images/04/QRcodeOutput/"+shoppingcart.getORDERID()+".png";
+				String filePath = "C:\\iii\\HibernateWorkspace\\Art-AOP\\QRcodeOutput\\"+shoppingcart.getORDERID()+".png";
 		// 字元編碼
 				String charset = "UTF-8"; // "ISO-8859-1"
 				Map hintMap = new HashMap();
@@ -28,12 +33,12 @@ public class QRCodeToolTest {
 				
 			}
 	public static void main(String[] args) throws WriterException, IOException, NotFoundException {
-// 二維碼字串
-		String qrCodeData = "https://www.google.com/";
+// 二維碼字串		
+		String qrCodeData = "測試";
 // 二維碼名稱
-		String filePath = "QRcodeOutput/Q444.png";
+		String filePath = "WebContent\\WEB-INF\\pages\\images\\04\\QRcodeOutput/1122.png";
 // 字元編碼
-		String charset = "UTF-8"; // "ISO-8859-1"
+		String charset = "UTF-8";  //"ISO-8859-1"
 		Map hintMap = new HashMap();
 		hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
 		QRCodeTool.createQRCode(qrCodeData, filePath, charset, hintMap, 200, 200);

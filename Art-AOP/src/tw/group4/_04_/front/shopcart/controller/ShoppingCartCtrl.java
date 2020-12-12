@@ -187,9 +187,9 @@ public class ShoppingCartCtrl {
 		shoppingcart.setORDERID(orderlistID);
 		shoppingcartService.insert(shoppingcart);
 		System.out.println("訂單已成立");
-//		qrcodetool.QRCode(shoppingcart);
+		qrcodetool.QRCode(shoppingcart);
 		//寄訂單詳細mail
-//		emailServiceImpl.processmailsendHTML(shoppingcart);
+
 		emailServiceImpl.processmailsendHTML(shoppingcart);
 			
 //		model.addAttribute("orderlistID", orderlistID);
