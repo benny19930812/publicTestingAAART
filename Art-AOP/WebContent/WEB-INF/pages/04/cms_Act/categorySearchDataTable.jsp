@@ -89,12 +89,12 @@
 			<button name="category" type="submit" value="7" class="btn btn-info">講座</button>
 			<button name="category" type="submit" value="8" class="btn btn-info">電影</button>
 			<button name="category" type="submit" value="11" class="btn btn-info">綜藝</button>
-			<button name="category" type="submit" value="13" class="btn btn-info">競賽</button>
-			<button name="category" type="submit" value="14" class="btn btn-info">徵選</button>
+<!-- 			<button name="category" type="submit" value="13" class="btn btn-info">競賽</button> -->
+<!-- 			<button name="category" type="submit" value="14" class="btn btn-info">徵選</button> -->
 			<button name="category" type="submit" value="15" class="btn btn-info">其他</button>
-			<button name="category" type="submit" value="16" class="btn btn-info">科教</button>
+<!-- 			<button name="category" type="submit" value="16" class="btn btn-info">科教</button> -->
 			<button name="category" type="submit" value="17" class="btn btn-info">演唱會</button>
-			<button name="category" type="submit" value="19" class="btn btn-info">研習課程</button>
+<!-- 			<button name="category" type="submit" value="19" class="btn btn-info">研習課程</button> -->
 		</form><br><br>
 
 

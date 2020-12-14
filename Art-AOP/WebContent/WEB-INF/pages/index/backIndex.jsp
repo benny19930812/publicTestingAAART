@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
+
 
 
 
@@ -129,31 +131,32 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">營收成長</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">各入口點擊率</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-header">請選擇欲察看之區間:</div>
+                      <a class="dropdown-item" href="#" id="barNow">本日</a>
+                      <a class="dropdown-item" href="#" id="barMonth">本月</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="#" id="barYear">本年度</a>
                     </div>
                   </div>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+<%--                     <canvas id="myAreaChart"></canvas> --%>
+                    <canvas id="myChart" width="400" height="150"></canvas>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
+            <div class="col-xl-6 col-lg-6">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -173,19 +176,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> 活動售票
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> 商城
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> 餐廳
-                    </span>
+                  <div class="chart-pie pt-1 pb-5">
+                    <canvas id="myDoughnutChart"></canvas>
                   </div>
                 </div>
               </div>
@@ -373,10 +365,6 @@
     </div>
   </div>
   
- <!-- Charts Data JS -->
-<script src="<c:url value='/vendor/chart.js/Chart.min.js'/>"></script>
-<script src="<c:url value='/js/demo/chart-area-demo.js'/>"></script>
-<script src="<c:url value='/js/demo/chart-pie-demo.js'/>"></script> 
 
 
 <script>
@@ -430,7 +418,56 @@
     });
   })
   </script>
+   <!-- Charts Data JS -->
+<script src="<c:url value='/vendor/chart.js/Chart.min.js'/>"></script>
+<%-- <script src="<c:url value='/js/demo/chart-area-demo.js'/>"></script> --%>
+<%-- <script src="<c:url value='/js/demo/chart-pie-demo.js'/>"></script>  --%>
+<script src="<c:url value='/js14/barChart.js'/>"></script> 
 
+<script>
+var ctx = document.getElementById('myDoughnutChart').getContext('2d');
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: [
+              1200,
+              1112,
+              533,
+              202,
+              105,
+            ],
+            backgroundColor: [
+              "#F7464A",
+              "#46BFBD",
+              "#FDB45C",
+              "#949FB1",
+              "#4D5360",
+            ],
+            label: 'Dataset 1'
+        }],
+        labels: [
+          "售票",
+          "商城",
+          "餐廳",
+          "課程",
+          "贊助"
+        ]
+    },
+    options: {
+        responsive: true,
+        legend: {
+            position: 'top',
+        },
+        
+        animation: {
+            animateScale: true,
+            animateRotate: true
+        }
+    }
+});
+
+</script>
 
 </body>
 </html>

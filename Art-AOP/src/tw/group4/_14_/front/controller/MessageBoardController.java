@@ -69,6 +69,23 @@ public class MessageBoardController {
 		return list;
 
 	}
+	
+	@Hibernate
+	@RequestMapping(path = "/14/editMessage")
+	@ResponseBody
+	public List<MessageBoardAP> editMessage(@RequestParam(name = "apid") int apid, @RequestParam(name = "mbid") int mbid, @RequestParam(name = "content") String content ) {
+
+		MessageBoardAP selectMessage = mbService.selectMessage(mbid);
+		selectMessage.setContent(content);
+		mbService.updateMessage(selectMessage);
+		
+		List<MessageBoardAP> list = mbService.selectPdBoardAPs(apid);
+		
+		return list;
+
+	}
+	
+	
 	@Hibernate
 	@RequestMapping(path = "/14/saveMessage/{apid}.ctrl")
 	@ResponseBody

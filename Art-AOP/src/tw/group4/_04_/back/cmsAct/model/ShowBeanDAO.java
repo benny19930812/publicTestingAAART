@@ -298,5 +298,17 @@ public class ShowBeanDAO {
 	    }
 	    return bArray;
 	  }
+	
+	// 查詢熱門
+		public List<ShowBean> select_popularity() {
+			// "From ShowBean"為createQuery
+			//
+			Session session = sessionFacory.getCurrentSession();
+			Query<ShowBean> query = session.createQuery("From ShowBean SB WHERE SB.ACT_POPULARITY >10 ORDER BY SB.ACT_POPULARITY", ShowBean.class);
+			query.setFirstResult(1);
+			query.setMaxResults(4);
+			List<ShowBean> list = query.list();
+			return list;
+		}
 
 }

@@ -98,11 +98,17 @@ public class OracleSQL {
 	
 	private static final String CREATE_AlertsCenter = "Create TABLE ALERTSCENTER "
 			+ "(ALERTNO number generated as identity constraint ALERTNO_PK primary key, "
-			+ " LINK 			   varchar2(172) ,"
-			+ " ICON           	   varchar2(172), "
-			+ " TIME               Date, "
+			+ " MEMBERID 		   number ,"
+			+ " MEMBERNAME 		   varchar2(150) ,"
+			+ " LINK 			   varchar2(150) ,"
+			+ " ICON           	   varchar2(150), "
 			+ " TYPE               varchar2(100), "
-			+ " CONTENTAC          varchar2(172) "
+			+ " TIME               varchar2(100), "
+			+ " ISSUE              varchar2(100), "
+			+ " ISSUEID            number, "
+			+ " CONTENTAC          varchar2(172), "
+			+ " DESCRIPTION        varchar2(200), "
+			+ " STATUS            number "
 			+ " ) ";
 
 	

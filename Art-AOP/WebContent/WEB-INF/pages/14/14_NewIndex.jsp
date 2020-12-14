@@ -10,15 +10,15 @@
 
 
 
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 
 <body>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
 
 	<!-- start banner Area -->
 			<section class="banner-area relative" id="home">	
@@ -27,9 +27,9 @@
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								AAART Shop
+								得藝洋行
 							</h1>	
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="<c:url value='/14/shopListController.ctrl' />"> Shop</a></p>
+							<p class="text-white link-nav"><a href="index.html">首頁 </a>  <span class="lnr lnr-arrow-right"></span>  <a href="<c:url value='/14/shopListController.ctrl' />"> 洋行</a></p>
 						</div>											
 					</div>
 				</div>
@@ -39,13 +39,13 @@
 	
 	<c:choose>
     <c:when test='${! empty queryList }'>
-	<section class="upcoming-exibition-area section-gap justify-content-center">
+	<section class="upcoming-exibition-area section-gap justify-content-center" style="padding: 0px; padding-top:20px">>
 				<div class="container">
 
 					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
+						<div class="menu-content col-lg-8" >
 							<div class="title text-center">
-								<h2 class="mb-10">"All the products are a piece of art."</h2>
+								<h2 class="mb-2">"All the products are a piece of art."</h2>
 								<p>得藝的一天，從下單開始</p>
 							</div>
 						</div>
@@ -81,7 +81,7 @@
 										
 					<div class="row justify-content-center">
 			<c:forEach var='query' items='${queryList}' varStatus="vs">
-						<div class="col-lg-4 col-md-6 single-exhibition justify-content-center">
+						<div class="col-lg-4 col-md-6 single-exhibition justify-content-center" >
 							<div class="thumb justify-content-center">
 								<img class="img-fluid" src="${pageContext.servletContext.contextPath}/14/getBlobImage/${query.productId}.ctrl" alt="" width="250" height="250">						
 							</div>
@@ -104,12 +104,12 @@
 			</section>
        </c:when>
 		<c:otherwise>	
-			<section class="upcoming-exibition-area section-gap justify-content-center">
+			<section class="upcoming-exibition-area section-gap justify-content-center" style="padding: 0px; padding-top:20px">
 				<div class="container">
 					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
+						<div class="menu-content col-lg-8">
 							<div class="title text-center">
-								<h2 class="mb-10">"All the products are a piece of art."</h2>
+								<h2 class="mb-2">"All the products are a piece of art."</h2>
 								<p>得藝的一天，從下單開始</p>
 							</div>
 						</div>
@@ -206,5 +206,6 @@ $(function(){
     })
 })
 </script>
+
 	
 </html>

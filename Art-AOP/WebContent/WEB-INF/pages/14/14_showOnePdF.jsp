@@ -43,6 +43,12 @@
 <!-- import Vue before Element -->
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 
+<!-- 引入样式 -->
+<!-- <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"> -->
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <link rel="stylesheet"
@@ -217,7 +223,7 @@
 											<button class="genric-btn danger">檢舉這則評論</button> <br>
 
 											<c:if test="${mList.memberId == sessionScope.member.id}">
-												<button class="genric-btn info" onclick="edit()">修改我的評論</button>
+												<button class="genric-btn info" onclick="edit(${mList.messageNoAP})">修改我的評論</button>
 											</c:if>
 										</div>
 									</div>
@@ -251,11 +257,6 @@
 														<a href="#">{{item.memberId}}</a>
 													</h5>
 													<p class="date">{{item.time}}</p>
-													<template slot-scope="item">
-														<el-rate v-model="item.score" disabled show-score
-															text-color="#ff9900" score-template="{value}">
-														</el-rate>
-													</template>
 													<div class="thumb justify-content-center">
 														<img class="img-fluid" :src="item.scoreString" alt=""
 															width="100" height="20">
@@ -267,7 +268,10 @@
 											<div class="reply-btn">
 												<button class="genric-btn danger">檢舉這則評論</button> <br>
 
-												<button v-if="item.memberId === memberId" class="genric-btn info" onclick="edit()">修改我的評論</button>
+												<button v-if="item.memberId === memberId" class="genric-btn info" @click="editV(item.messageNoAP)">修改我的評論</button>
+<!-- 												<template v-if="item.memberId === memberId"> -->
+<!--   												<el-button type="button" class="genric-btn info" @click="open(item.messageNoAP)">修改評論</el-button> -->
+<!-- 												</template> -->
 											</div>
 										</div>
 									</div>
@@ -375,9 +379,35 @@
 	                  alert("failure");
 	              }
 	          });
-	      }
-         })
+	      },
 
+	      methods: {
+
+	    	   editV: function(mbid) {
+	    		   edit(mbid);
+	        	}
+
+// 	    	  open: function(mbid) {
+// 	              this.$prompt('請輸入欲修改的內文', '提示', {
+// 	                  confirmButtonText: '確定',
+// 	                  cancelButtonText: '取消',
+// 	                }).then(({ value }) => {
+// 	                  this.$message({
+// 	                    type: 'success',
+// 	                    message: '更改的內文為: ' + value
+// 	                  });
+// 	                    aa(mbid, value);
+// 	                }).catch(() => {
+// 	                  this.$message({
+// 	                    type: 'info',
+// 	                    message: '取消输入'
+// 	                  });       
+// 	                });
+// 	              }
+
+
+        	 }
+         })
          
          function push() {
 				var self = vm;
@@ -417,6 +447,33 @@
 				});
 			}
 
+         function aa(mbid, value) {
+        	 var self = vm;
+        	 var apid = $("#productID").val();
+             var data= 'mbid='+mbid+'&content='+value+'&apid='+apid
+        	 $.ajax({
+ 				type: "get",
+ 				url: "/Art/14/editMessage",
+ 				contentType: "application/json",
+ 				dataType: "json",
+ 				data: data,
+ 				cache: false,
+ 				success: function(json) {
+ 					var arr = Object.keys(json);
+ 					var len = arr.length;
+ 					self.items = json;
+ 					self.len = len;
+ 					$('#fade').fadeOut('slow');
+ 					$('#messageBoard').fadeOut('slow');
+ 					getStar();
+ 					
+ 				},
+ 				error:  function() {
+ 					alert("failure");
+ 				}
+ 				});
+             }
+         
          function memberCheck() {
         	 var self = vm;
         	 $.ajax({
@@ -433,9 +490,28 @@
 	          });
          }
 
-         function edit() {
+         function edit(mbid) {
+        	 swal({
+        		 title: "修改留言內文",
+        		  text: "請輸入您要修改的文字：",
+        		  content: "input",
+        		  showCancelButton: true,
+        		  closeOnConfirm: false,
+        		  animation: "slide-from-top",
+        		  inputPlaceholder: "說點什麼嗎？"
+        		}).then(
+        		function(inputValue){
+        		  if (inputValue === false) return false;
 
-         }
+        		  if (inputValue === "") {
+        		    swal("不能空白喔!");
+        		    return false
+        		  }
+
+        		  swal("感謝您的留言!", "您的留言為: " + inputValue, "success");
+        		  aa(mbid, inputValue);
+        		});
+             }
          
       </script>
 
@@ -486,6 +562,26 @@ function getStar(){
 }
 
 </script>
+
+
+<script>
+
+// function getStar(){
+//     var self = star;
+//     var apid = $("#productID").val();
+//     fetch("<c:url value='/14/jsonTest/' />" + apid, {
+// 	  	method: 'GET',
+// 	  	headers: {
+// 	  	      'Content-Type': 'application/json'},
+// 	  	body: id_token
+// 		}).then(response => {
+// 			self.value = response.json();
+// 		} 
+// 	  );
+// }
+
+</script>
+
 
 
 

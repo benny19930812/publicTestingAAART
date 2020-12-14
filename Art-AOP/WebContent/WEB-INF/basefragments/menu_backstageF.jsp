@@ -213,8 +213,7 @@
 			</div>
 		</div></li>
 
-	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="#"> <i
+	<li class="nav-item"><a class="nav-link" href="<c:url value='/14/showAltartCenterCRUD' />"> <i
 			class="fas fa-fw fa-table"></i> <span>訊息通知中心</span></a></li>
 			
 	<!-- Nav Item - Charts -->

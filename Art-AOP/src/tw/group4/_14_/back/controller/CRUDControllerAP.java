@@ -225,7 +225,6 @@ public class CRUDControllerAP {
 		try {
 			pd.setProductImgBlob(mFile.getBytes());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

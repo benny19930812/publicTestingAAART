@@ -92,4 +92,8 @@ public class ProductBeanDAOService {
 		return pDAO.selectUserOrderListNoPage();
 	}
 	
+	public List<ARTProduct> selectNoImg() {
+		return pDAO.selectNoImg();
+	}
+	
 }

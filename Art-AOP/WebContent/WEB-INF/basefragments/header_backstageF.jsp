@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
  <div id="content-wrapper" class="d-flex flex-column">
  <div id="content">
   <!-- Topbar -->
@@ -46,11 +47,12 @@
             </li>
 
             <!-- Nav Item - Alerts -->
+            <div id="app">
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown " role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                 <i class="fa fa-bell" aria-hidden="true" ></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">12</span>
+                <span class="badge badge-danger badge-counter">{{unReadSum}}</span>
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown" >
@@ -58,7 +60,7 @@
                   	通知中心
                 </h6>
                 <div>
-                  <div id="app">
+                  <div >
                 <a v-for="item in list" class="dropdown-item d-flex align-items-center" :href="item.link">
                   <div class="mr-3">
                     <div :class="item.type">
@@ -66,15 +68,16 @@
                     </div>
                   </div>
                     <div class="small text-gray-500">{{item.time}}</div>
-                    <span class="font-weight-bold">{{item.contentAC}}</span>
+                    <span v-if="item.status===1" class="font-weight-bold">{{item.contentAC}}</span>
+                    <span v-else class="small text-gray-500">{{item.contentAC}}</span>
                 </a>
-                <a  class="dropdown-item text-center small text-gray-500" href="#">瀏覽所有通知  {{text}}</a>
+                <a  class="dropdown-item text-center small text-gray-500" href="#">瀏覽所有通知</a>
                 </div>
                   </div>
                
               </div>
             </li>
-
+		</div>
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -165,16 +168,17 @@
 
         </nav>
         <script>
-        var vm = new Vue({
+        var vm2 = new Vue({
         	el:'#app',
-        	data(){
+        	data() {
         		return {
             		
 					list:null,
-					text:null
+					text:null,
+					unReadSum:null
         		}
 	    	},
-            	mounted: function(){
+	    	created: function(){
       	          var self = this;
 //       	          var apid = $("#productID").val();
       	          $.ajax({
@@ -184,6 +188,7 @@
       	              dataType:"json",
       	              success:function(value){
       	              	self.list = value;
+      	              UnReadSum()
       	              	
       	              },
       	              error:function(){
@@ -214,4 +219,21 @@
       }
     });
   })
+  
+  
+  function UnReadSum() {
+        	 var self = vm2;
+        	 $.ajax({
+	              type:"get",
+	              url:"/Art/14/UnReadSum",    
+	              dataType:"text",
+	              success:function(sum){
+	              	self.unReadSum = sum;
+	              	
+	              },
+	              error:function(){
+	                  alert("UnReadSum():整組壞光光");
+	              }
+	          });
+         }
   </script>
