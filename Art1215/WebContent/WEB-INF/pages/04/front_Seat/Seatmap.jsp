@@ -159,7 +159,7 @@ body {
 							<td>全票<br>半票</td>
 							<td>50</td>
 							<td >$1000<br>$2000</td>
-							<td >45</td>
+							<td id="seatnum1">0</td>
 
 						</tr>
 						<tr class="trB">
@@ -168,18 +168,18 @@ body {
 							<td>全票<br>半票</td>
 							<td>50</td>
 							<td >$1000<br>$2000</td>
-							<td >50</td>
+							<td id="seatnum2">0</td>
 
 						</tr>
 						<tr class="trC">
 							<td style="background-color: rgb(255, 192, 0)"></td>
 							<td>C</td>
 							<td>全票<br>半票</td>
-							<td>64</td>
+							<td>66</td>
 							<td >$1000<br>$2000</td>
-							<td>64</td>
+							<td id="seatnum3">0</td>
 						</tr>
-					</table>
+					</table>					
 				</div>
 				<div class="col-sm-7">
 
@@ -187,41 +187,53 @@ body {
        				<a id="area2" class="area" href="#"></a>
        				<a id="area3" class="area" href="#"></a>
 					<img src="<c:url value='/images/04/seatmap.jpg' />" border="0" usemap="#Map" alt="座位表" id="seatmap" class="map"   /> 
-<!-- 					<map name="Map" id="Map"> -->
-<!-- 						<area target="sssssss" shape="rect" coords="123,111,470,304" -->
-<!-- 							href="sun.html" alt="淺藍色" /> -->
-<!-- 						<area target="sssssss" shape="rect" coords="123,303,470,495" -->
-<!-- 							href="" alt="深藍色" /> -->
-<!-- 						<area target="" alt="area1" title="" href="" -->
-<!-- 							coords="39,113,123,113,125,495,474,493,474,113,561,113,562,457,521,458,522,534,473,533,473,573,387,573,386,612,211,611,211,571,127,572,127,534,81,535,81,458,40,459" -->
-<!-- 							shape="poly"> -->
-<!-- 					</map> -->
 				</div>
-<!-- 				<br> <br> <input type="submit" id="submit" -->
-<!-- 					class="genric-btn primary-border radius" value="下一步" -->
-<!-- 					onclick="checknum()"> -->
-<!-- 		</form> -->
 
 
 
 
 		</body>
 <script type="text/javascript">
+//選取變色
 $("#area1").mouseenter(function(){
 	  $(".trA").css({"background-color":"#CC0000","opacity":"0.4"});
 	}).mouseleave(function(){
 	  $(".trA").css({"background-color":"","opacity":""});
-	});;
+	});
 $("#area2").mouseenter(function(){
 	  $(".trB").css({"background-color":"#CC0000","opacity":"0.4"});
 	}).mouseleave(function(){
 	  $(".trB").css({"background-color":"","opacity":""});
-	});;
+	});
 $("#area3").mouseenter(function(){
 	  $(".trC").css({"background-color":"#CC0000","opacity":"0.4"});
 	}).mouseleave(function(){
 	  $(".trC").css({"background-color":"","opacity":""});
-	});;
+	});
+	</script>
+	
+<script>	
 
+$(document).ready(function(){
+   	 $.ajax({
+			type: "get",
+			url: "/Art/04/seatnumSearch.ctrl",
+			contentType: "application/json",
+			dataType: "json",
+// 			data: data,
+			cache: false,
+			success: function(json) {
+		    	$("#seatnum1").text(json.seatnum2)
+		    	$("#seatnum2").text(json.seatnum2)
+		    	$("#seatnum3").text(json.seatnum3)			
+			},
+			error:  function() {
+				alert("failure");
+			}
+			});	
+
+	});
+
+	
 </script>
 </html>

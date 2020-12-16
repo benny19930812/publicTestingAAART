@@ -103,5 +103,11 @@ public class ShowBeanService {
 
 		return SDao.select_popularity();
 	}
+	//查詢四筆相似
+	public List<ShowBean> findlike(String searchString) {
+		
+		return SDao.findlike(searchString);
+		
+	}
 
 }

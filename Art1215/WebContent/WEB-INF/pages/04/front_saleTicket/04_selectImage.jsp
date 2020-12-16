@@ -362,41 +362,6 @@ body {
 			</div>
 		</div>
 
-
-		<!-- 		<table class="table table-bordered"> -->
-		<!-- 			<tr> -->
-		<!-- 				<th class="date">圖片</th> -->
-		<!-- 				<th class="date">日期</th> -->
-		<!-- 				<th class="title">節目名稱</th> -->
-		<!-- 				<th class="site">場地</th> -->
-		<!-- 				<th class="buy">購買</th> -->
-		<!-- 			</tr> -->
-
-		<%-- 			<%--使用JSTL 執行for loop ${show.no}取map內value --%>
-		<%-- 			<c:forEach items="${currentPage}" var="show" varStatus="idx"> --%>
-		<!-- 				<tr> -->
-		<!-- 					傳送訂單資訊 -->
-		<%-- 					<form method="GET" action="<c:url value='/04/showDetail.ctrl'/>" > --%>
-		<%-- 					<Input type='hidden' name='actid' value='${show.no}'> --%>
-		<!-- 					<td> -->
-		<%-- <%-- 					<a href="javascript:;" onclick="document.getElementById('form${show.no}').submit();"> --%>
-		<%-- 					<a href="<c:url value='/04/showDetail.ctrl?actid=${show.no}'/>"> --%>
-		<%-- 					<img style='display:block;width:200px;' src="data:image/jpg;base64,${show.photo}" class="actimg" > --%>
-		<!-- 					</a> -->
-		<!-- 					</td> -->
-		<%-- 					<td>${show.startdate}~ ${show.enddate}</td> --%>
-		<%-- 					<td>${show.title}</td> --%>
-		<%-- 					<td>${show.site}</td> --%>
-		<!-- 					<td><input type=SUBMIT value="立即購買" class="genric-btn success-border radius"></td> -->
-		<!-- <!-- 					這些隱藏欄位都會送到後端 -->
-
-		<%-- 					</form> --%>
-		<!-- 					</tr> -->
-
-		<%-- 			</c:forEach> --%>
-
-
-		<!-- 		</table> -->
 		<br>
 
 		<!-- 頁數區 -->

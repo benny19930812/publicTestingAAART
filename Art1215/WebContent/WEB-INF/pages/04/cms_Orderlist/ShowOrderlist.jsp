@@ -48,10 +48,11 @@
 					<td>${orderlist.TICKETCATEGORY}</td>
 					<td>${orderlist.TICKET_NUM}</td>
 					<td>${orderlist.TOTALPRICE}</td>
-					<td>已付款</td>
+					<td>${orderlist.STATUS}</td>
 					<td>
-						<form name="order" action="<c:url value='/04/Cms/DeleteOrderlist.ctrl'/> " method="get"> 						
-						<button type="submit" name="orderid"  value="${orderlist.ORDERID}" class="btn btn-info" onclick="return del()">取消訂單</button>
+						<form name="order" action="<c:url value='/04/Cms/OrderlistStatus.ctrl'/> " method="get"> 	
+						<input type="hidden" name="orderpk" value="${orderlist.ORDERPK}">					
+						<button type="submit" name="orderid"  value="${orderlist.ORDERID}" class="btn btn-info" onclick="return del()">辦理退票</button>
 						</form> 
 					</td>
 

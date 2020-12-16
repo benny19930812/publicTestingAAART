@@ -185,6 +185,7 @@ public class ShoppingCartCtrl {
 		shoppingcart.setSeatstring(seatsString);
 		//orderid存入shoppingcart
 		shoppingcart.setORDERID(orderlistID);
+		shoppingcart.setSTATUS("已付款");
 		shoppingcartService.insert(shoppingcart);
 		System.out.println("訂單已成立");
 		qrcodetool.QRCode(shoppingcart);
@@ -215,8 +216,8 @@ public class ShoppingCartCtrl {
 		session.removeAttribute("shoppingcart");
 		session.removeAttribute("shoppingcartnum");
 		//傳至綠界
-		return "04/front_Orderlist/EcPay";
-//		return "04/front_Orderlist/ThxOrder";
+//		return "04/front_Orderlist/EcPay";
+		return "04/front_Orderlist/ThxOrder";
 	}
 	@Hibernate
 	@RequestMapping(path = "/04/goshoppingcart.ctrl", method = RequestMethod.GET)

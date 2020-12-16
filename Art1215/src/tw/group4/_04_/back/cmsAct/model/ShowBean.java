@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
 
@@ -91,7 +92,8 @@ public class ShowBean implements Serializable{
 	@Lob 
 //	@Basic(fetch = FetchType.LAZY)
 	private byte[] ACT_PHOTO;
-	
+	@Transient
+	private String PHOTOBASE64;
 
 	public int getACT_NO() {
 		return ACT_NO;
@@ -220,23 +222,30 @@ public class ShowBean implements Serializable{
 	public void setACT_ENDDATE(String aCT_ENDDATE) {
 		ACT_ENDDATE = aCT_ENDDATE;
 	}
-	
-	public byte[] getACT_PHOTO() {
-		return ACT_PHOTO;
-	}
 
 	public Integer getACT_POPULARITY() {
 		return ACT_POPULARITY;
 	}
 
-	public void setACT_POPULARITY(int aCT_POPULARITY) {
+	public void setACT_POPULARITY(Integer aCT_POPULARITY) {
 		ACT_POPULARITY = aCT_POPULARITY;
+	}
+
+	public byte[] getACT_PHOTO() {
+		return ACT_PHOTO;
 	}
 
 	public void setACT_PHOTO(byte[] aCT_PHOTO) {
 		ACT_PHOTO = aCT_PHOTO;
 	}
-	
-	
 
+	public String getPHOTOBASE64() {
+		return PHOTOBASE64;
+	}
+
+	public void setPHOTOBASE64(String pHOTOBASE64) {
+		PHOTOBASE64 = pHOTOBASE64;
+	}
+	
+	
 }

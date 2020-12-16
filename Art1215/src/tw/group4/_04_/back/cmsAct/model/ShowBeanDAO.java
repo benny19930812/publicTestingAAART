@@ -283,6 +283,16 @@ public class ShowBeanDAO {
 		return query.list();
 
 	}
+	public List<ShowBean> findlike(String searchString) {
+		
+		Session session = sessionFacory.getCurrentSession();
+		String queryString = "from ShowBean where ACT_TITLE like'%" + searchString + "%'";
+		Query query = session.createQuery(queryString);
+		query.setFirstResult(1);
+		query.setMaxResults(4);
+		return query.list();
+		
+	}
 	//file2byte[]方法
 	private static byte[] readFileToByteArray(File file){
 	    FileInputStream fis = null;

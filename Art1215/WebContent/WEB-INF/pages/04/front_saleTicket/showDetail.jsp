@@ -144,74 +144,53 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
 
 		</form>
 		
-	<!-- 				Start blog Area
+		<!-- Start blog Area -->
 			<section class="blog-area section-gap" id="blog">
 				<div class="container">
-			
-				<h1 class="mb-10">找類似</h1>
-					<div class="row">
-						<div class="col-lg-3 col-md-6 single-blog">
-							<div class="thumb">
-								<img class="img-fluid" src="/Art/frontstyle/img/blog_5.jpg" alt="">								
-							</div>
-							<p class="date">10 Jan 2018</p>
-							<a href="#"><h4>藝術課程 #1</h4></a>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
-							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 則回應</p>
-							</div>									
-						</div>
-						<div class="col-lg-3 col-md-6 single-blog">
-							<div class="thumb">
-								<img class="img-fluid" src="/Art/frontstyle/img/blog_2.jpg" alt="">								
-							</div>
-							<p class="date">10 Jan 2018</p>
-							<a href="#"><h4>藝術課程 #2</h4></a>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
-							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 則回應</p>
-							</div>									
-						</div>
-						<div class="col-lg-3 col-md-6 single-blog">
-							<div class="thumb">
-								<img class="img-fluid" src="/Art/frontstyle/img/blog_3.jpg" alt="">								
-							</div>
-							<p class="date">10 Jan 2018</p>
-							<a href="#"><h4>藝術課程 #3</h4></a>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
-							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 則回應</p>
-							</div>									
-						</div>
-						<div class="col-lg-3 col-md-6 single-blog">
-							<div class="thumb">
-								<img class="img-fluid" src="/Art/frontstyle/img/blog_4.jpg" alt="">								
-							</div>
-							<p class="date">10 Jan 2018</p>
-							<a href="#"><h4>藝術課程 #4</h4></a>
-							<p>
-								inappropriate behavior ipsum dolor sit amet, consectetur.
-							</p>
-							<div class="meta-bottom d-flex justify-content-between">
-								<p><span class="lnr lnr-heart"></span> 15 Likes</p>
-								<p><span class="lnr lnr-bubble"></span> 02 則回應</p>
-							</div>									
-						</div>							
+					<h1 class="mb-10">相似活動</h1>
+					<div class="row" id="likeact">
+
 					</div>
 				</div>	
 			</section>
-			End blog Area -->
+			<!-- End blog Area -->
 		
 		
+
+<script>	
+
+$(document).ready(function(){
+
+   	 $.ajax({
+			type: "get",
+			url: "/Art/04/Searchlike",
+			contentType: "application/json",
+			dataType: "json",
+// 			data: data,
+			cache: false,
+			success: function(json) {
+				$.each(json, function( index, value ) {
+				$("#likeact").append(
+				"<div class='col-lg-3 col-md-6 single-blog'>"
+				+"<div class='thumb'>"
+				+"<img class='img-fluid' style='display:block;width:200px;' src='data:image/jpg;base64,"+value.PHOTOBASE64+"'>"							
+				+"</div>"
+				+"<p>"+value.ACT_STARTDATE+"</p>"
+				+"<a href='<c:url value='/04/showDetail.ctrl?actid="+value.ACT_NO+"'/>'><h4>"+value.ACT_TITLE+"</h4></a>"
+				+"<p></p><div class='meta-bottom d-flex justify-content-between'><p><span class='lnr lnr-heart'></span> 15 Likes</p><p><span class='lnr lnr-bubble'></span> 02 則回應</p></div>"								
+				+"</div>");
+					});
+								
+			},
+			error:  function() {
+				alert("failure");
+			}
+			});	
+
+	});
+
+	
+</script>
 
 </body>
 

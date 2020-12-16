@@ -25,6 +25,15 @@ public class SeatBeanService {
 		return (SeatBean) seatBeanDAO.selectBean(actno);
 	}
 
+	public SeatBean2 selectBean2(int actno) {
+
+		return (SeatBean2) seatBeanDAO.selectBean2(actno);
+	}
+	public SeatBean3 selectBean3(int actno) {
+
+		return (SeatBean3) seatBeanDAO.selectBean3(actno);
+	}
+
 	// 新增
 	public SeatBean insert(SeatBean seatBean) {
 		return seatBeanDAO.insert(seatBean);

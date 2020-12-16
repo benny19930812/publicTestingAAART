@@ -80,8 +80,10 @@ display:inline;
 		<form name="order" action="<c:url value='/04/Cms/UpdateOrderlist.ctrl'/> " method="get"> 						
 			 <button type="submit" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="btn btn-info" >修改訂單</button>
 		</form> 
-		<form name="order" action="<c:url value='/04/Cms/DeleteOrderlist.ctrl'/> " method="get"> 						
-			 <button type="submit" name="orderid"  value="${requestScope.orderlist.ORDERID}" class="btn btn-info" onclick="return del()">取消訂單</button>
+		<form name="order" action="<c:url value='/04/Cms/OrderlistStatus.ctrl'/> " method="get"> 						
+<%-- 		<form name="order" action="<c:url value='/04/Cms/DeleteOrderlist.ctrl'/> " method="get"> 						 --%>
+			<input type="hidden" name="orderpk" value="${orderlist.ORDERPK}">					
+			<button type="submit" name="orderid"  value="${orderlist.ORDERID}" class="btn btn-info" onclick="return del()">取消訂單</button>
 		</form> 
 
 

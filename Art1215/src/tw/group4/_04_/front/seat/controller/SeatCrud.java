@@ -19,10 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.google.gson.Gson;
+
 import oracle.net.aso.m;
 import tw.group4._04_.back.cmsAct.model.ShowBean;
 import tw.group4._04_.back.cmsAct.model.ShowBean2;
 import tw.group4._04_.front.seat.model.SeatBean;
+import tw.group4._04_.front.seat.model.SeatBean2;
+import tw.group4._04_.front.seat.model.SeatBean3;
 import tw.group4._04_.front.seat.model.SeatBeanDAO;
 import tw.group4._04_.front.seat.model.SeatBeanService;
 import tw.group4._04_.front.shopcart.model.Shoppingcart;
@@ -33,6 +37,10 @@ public class SeatCrud {
 
 	@Autowired
 	private SeatBean seatBean;
+	@Autowired
+	private SeatBean2 seatBean2;
+	@Autowired
+	private SeatBean3 seatBean3;
 	@Autowired
 	private SeatBeanService seatBeanService;
 	@Autowired
@@ -129,6 +137,24 @@ public class SeatCrud {
 
 		return "04/front_saleTicket/Booking2";
 
+	}
+
+	// 查詢座位數量
+	@Hibernate
+	@RequestMapping(path = "/04/seatnumSearch.ctrl", method = RequestMethod.GET)
+	@ResponseBody
+	public String seatnumSearch(Model model, HttpSession session, String ticketcategry) {
+		Integer actno = 1;
+		HashMap<String, Integer> seatnumMap = new HashMap<String, Integer>();
+		Integer seatnum=seatBeanService.selectBean(actno).getSEATNUM();
+		Integer seatnum2=seatBeanService.selectBean2(actno).getSEAT2NUM();
+		Integer seatnum3=seatBeanService.selectBean3(actno).getSEAT3NUM();
+		seatnumMap.put("seatnum", seatnum);
+		seatnumMap.put("seatnum2", seatnum2);
+		seatnumMap.put("seatnum3", seatnum3);
+		Gson gson = new Gson();
+		String json = gson.toJson(seatnumMap);
+		return json;
 	}
 
 }

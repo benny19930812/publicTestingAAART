@@ -68,7 +68,7 @@
 					<td>${orderlist.TICKETCATEGORY}</td>
 					<td>${orderlist.TICKET_NUM}</td>
 					<td>${orderlist.TOTALPRICE}</td>
-					<td>已付款</td>
+					<td>${orderlist.STATUS}</td>
 <!-- 					<td> -->
 <!-- 						<form name="order" -->
 <%-- 							action="<c:url value='/04/DeleteOrderlist.ctrl'/> " method="get"> --%>
@@ -77,9 +77,9 @@
 <!-- 						</form> -->
 <!-- 					</td> -->
 					<td>
-						<form name="order"
-							action="<c:url value='/04/WriteIssueForm'/> " method="get">
-							<button type="submit" name="issueId" value="${orderlist.ORDERID}"class="genric-btn success-border radius" onclick="return del()">申請退票</button>
+						<form id="submitform" name="order" action="<c:url value='/04/WriteIssueForm'/>" method="get">
+							<input type="hidden" name="issueId" value="${orderlist.ORDERID}" >
+							<button type="button" id="submit" class="genric-btn success-border radius" ">申請退票</button>
 						</form>
 					</td>
 
@@ -93,17 +93,6 @@
 		</table>
 		</form>
 	</div>
-	<!-- 	 <input type="submit" value="修改訂單" name="submit" class="btn btn-outline-info" id="update"  > -->
-
-	<!-- 	  <input type="submit" value="刪除訂單" name="submit" class="btn btn-outline-info" id="delete"  > -->
-	<%-- 	 <form name="order" action="<c:url value='/_04_Orderlist/OrIdDeleteServlet'/> " method="get"> --%>
-	<!-- 	  </form> -->
-	<script src="https://code.jquery.com/jquery-3.5.1.js"
-		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-		crossorigin="anonymous"></script>
-	</script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 
 	<script>
@@ -116,24 +105,43 @@
 			}
 		}
 		
-// 		 document.querySelector('#cancel').onclick = function(){
-// 		    	swal({
-// 		    		  title: "是否取消訂單?",
-// 		    		  text: "訂單即將取消!",
-// 		    		  icon: "warning",
-// 		    		  buttons: true,
-// 		    		  dangerMode: true,
-// 		    		})
-// 		    		.then((cancelOK) => {
-// 		    			  if (cancelOK) {
-// 		    			    swal("訂單已取消!", 
-// 		    			    	{icon: "success",});
-// 		    		    	setTimeout(function(){window.location="<c:url value='/04/DeleteOrderlist.ctrl'/>" ; },2000);
-// 		    			  } else {
-// 		    			    swal("動作已取消!");
-// 		    			  }
-// 		    			});
-// 		    };
+		$("#submit").click(function() {
+			var form = $(this).parents('form');
+			swal({
+					  title: "是否申請退票票券?",
+					  text: "將填寫申請單!",
+					  icon: "warning",
+					  buttons: true,
+					  dangerMode: true,
+					})
+					.then((orderOK) => {
+						  if (orderOK) {
+							  $("#submitform").submit();					
+						  } else {
+						    swal("申請已取消!");
+						  }
+						});
+
+	 		});
+
+// $("#submit").click(function() {
+// 		var form = $(this).parents('form');
+// 		swal({
+// 				  title: "是否刪除票券?",
+// 				  text: "票券即將刪除!",
+// 				  icon: "warning",
+// 				  buttons: true,
+// 				  dangerMode: true,
+// 				})
+// 				.then((orderOK) => {
+// 					  if (orderOK) {
+// 					form.submit();					
+// 					  } else {
+// 					    swal("刪除已取消!");
+// 					  }
+// 					});
+
+//  		});
 	</script>
 
 

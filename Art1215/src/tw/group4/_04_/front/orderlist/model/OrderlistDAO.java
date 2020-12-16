@@ -76,6 +76,21 @@ public class OrderlistDAO {
 
 		return orderlist;
 	}
+	
+	// 修改退票
+		public Orderlist  updateStatus(int orderPK) {
+
+			Session session = sessionFacory.getCurrentSession();
+			Orderlist orderlist = session.get(Orderlist.class, orderPK);
+
+			
+			if (orderlist != null) {
+				orderlist.setSTATUS("已退票");;
+
+			}
+
+			return orderlist;
+		}
 
 	// 刪除
 //	public boolean delete(String memberid) {

@@ -225,8 +225,8 @@
  				var tickstring=$("#ticketnum").text();
  				var ticknum =parseInt(tickstring);			
  				if ($(".seat").length ==parseInt($("#ticketnum").text())) {
- 					alert("已經選擇"+$(".seat").length+"個座位");
- 					
+//  					alert("已經選擇"+$(".seat").length+"個座位");
+ 					swal("劃位完成","已經選擇"+$(".seat").length+"個座位","success");
 				}
  			} else {
  	 			//換回空位
@@ -247,7 +247,8 @@
 			var ticketnum = parseInt($("#ticketnum").text());
 			var notselect=ticketnum-selectnum;
 			if (selectnum < ticketnum ) {
-				alert("尚有"+notselect+"個座位未劃位");
+// 				alert("尚有"+notselect+"個座位未劃位");
+ 				swal("劃位錯誤","尚有"+notselect+"個座位未劃位","error");
  	           return false;
  	        }
  	  }); 
