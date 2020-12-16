@@ -30,7 +30,7 @@
 			<div class="col-lg-8 col-md-8">
 				<h3 class="mb-30">請填寫問題詳情</h3>
 				<h5 class="mb-30">請填寫表單最下方之問題詳情，我們會盡快為您服務 :)</h5>
-				<form action="<c:url value='/04/ShopAPAlerts'/>" method="POST">
+				<form action="<c:url value='/04/ShopAPAlerts'/>" method="POST" id="submitform">
 				<div class="form-row" style="font-size:14px;">
 					<div class="form-group col-md-6">
 						<label for="inputEmail4">您的會員編號</label> <input type="text" name="memberId"
@@ -62,9 +62,9 @@
 							placeholder="請詳細描述您的問題" onfocus="this.placeholder = ''"
 							onblur="this.placeholder = '請詳細描述您的問題'" required></textarea>
 					</div>
-					<button class="genric-btn primary-border small" type="submit" id="submit" onclick="return del()">確認送出 </button>
-					<button class="genric-btn primary-border small" type="button" id="btn">一鍵完成 </button>
 				</form>
+					<button class="genric-btn primary-border small" type="button" id="submit" onclick="submit()">確認送出 </button>
+					<button class="genric-btn primary-border small" type="button" id="btn">一鍵完成 </button>
 			</div>
 		</div>
 	</div>
@@ -83,15 +83,33 @@
 
 //     });
     
-    function del() {
-    	$("input").prop("disabled",false);
-		var msg = "將送出退票申請，之後審核將由系統為您退票";
-		if (confirm(msg) == true) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+//     function del() {
+//     	$("input").prop("disabled",false);
+// 		var msg = "將送出退票申請，之後審核將由系統為您退票";
+// 		if (confirm(msg) == true) {
+// 			return true;
+// 		} else {
+// 			return false;
+// 		}
+// 	}
+function submit() {
+ 	$("input").prop("disabled",false);
+			swal({
+					  title: "是否申請退票票券?",
+					  text: "將填寫申請單!",
+					  icon: "warning",
+					  buttons: true,
+					  dangerMode: true,
+					})
+					.then((orderOK) => {
+						  if (orderOK) {
+							  $("#submitform").submit();					
+						  } else {
+						    swal("申請已取消!");
+						  }
+						});
+	 		
+	 		}
 
     </script>
 </body>

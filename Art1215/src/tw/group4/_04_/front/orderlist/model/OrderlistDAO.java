@@ -85,6 +85,7 @@ public class OrderlistDAO {
 
 			
 			if (orderlist != null) {
+				orderlist.setTOTALPRICE(0);
 				orderlist.setSTATUS("已退票");;
 
 			}

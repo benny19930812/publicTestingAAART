@@ -79,8 +79,8 @@
 					<td>
 						<form id="submitform" name="order" action="<c:url value='/04/WriteIssueForm'/>" method="get">
 							<input type="hidden" name="issueId" value="${orderlist.ORDERID}" >
-							<button type="button" id="submit" class="genric-btn success-border radius" ">申請退票</button>
 						</form>
+						<button type="button" id="submit" class="genric-btn success-border radius" ">申請退票</button>
 					</td>
 
 
@@ -106,7 +106,7 @@
 		}
 		
 		$("#submit").click(function() {
-			var form = $(this).parents('form');
+
 			swal({
 					  title: "是否申請退票票券?",
 					  text: "將填寫申請單!",

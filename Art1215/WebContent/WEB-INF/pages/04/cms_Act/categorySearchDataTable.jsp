@@ -162,14 +162,14 @@
 
 						<td>
 							<form name="order" action="<c:url value='/04/CMS/Delete.ctrl'/>"
-								method="get">
-								<button name="actno" type="submit" value=${show.no
-									}
-									class="btn btn-outline-info" onclick="return del()">刪除</button>
+								method="get" >
 								<!-- 這些隱藏欄位都會送到後端 -->
 <%-- 								<Input type='hidden' name='page' value='${page}'>  --%>
+								<Input type='hidden' name='actno' value='${show.no}'>
 								<Input type='hidden' name='category' value='${category}'>
 							</form>
+				
+								<button name="actno" type="button" class="btn btn-outline-info" onclick="del(${show.no},${category})">刪除</button>
 						</td>
 						<td>
 							<form name="order"
@@ -198,8 +198,27 @@
 
 
 	<script type="text/javascript">
-	function del() { var msg = "是否刪除?"; if (confirm(msg) == true) { return
-	true; } else { return false; } }
+// 	function del() { var msg = "是否刪除?"; if (confirm(msg) == true) { return
+// 	true; } else { return false; } }
+	
+	function del(actid,category) {
+				swal({
+						  title: "是否刪除活動?",
+						  text: "活動將被刪除!",
+						  icon: "warning",
+						  buttons: true,
+						  dangerMode: true,
+						})
+						.then((orderOK) => {
+							  if (orderOK) {
+								window.location="<c:url value='/04/CMS/Delete.ctrl?actno="+actid+"&category="+category+"' />"; 
+								 			
+							  } else {
+							    swal("操作已取消!");
+							  }
+							});
+		 		
+		 		}
 
 	</script>
 	<script>

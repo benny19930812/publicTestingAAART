@@ -50,10 +50,11 @@
 					<td>${orderlist.TOTALPRICE}</td>
 					<td>${orderlist.STATUS}</td>
 					<td>
-						<form name="order" action="<c:url value='/04/Cms/OrderlistStatus.ctrl'/> " method="get"> 	
+						<form name="order" action="<c:url value='/04/Cms/OrderlistStatus.ctrl'/> " id="submitform" method="get"> 	
 						<input type="hidden" name="orderpk" value="${orderlist.ORDERPK}">					
-						<button type="submit" name="orderid"  value="${orderlist.ORDERID}" class="btn btn-info" onclick="return del()">辦理退票</button>
+						<input type="hidden" name="orderid" value="${orderlist.ORDERID}">					
 						</form> 
+						<button type="button" name="orderid" class="btn btn-info" onclick="submit()">辦理退票</button>
 					</td>
 
 			
@@ -64,7 +65,7 @@
 
 
 		</table>
-	</form>	
+
 
  <script src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -80,14 +81,31 @@
     
     </script>	  
     	<script>
-		function del() {
-			var msg = "是否取消?";
-			if (confirm(msg) == true) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+// 		function del() {
+// 			var msg = "是否取消?";
+// 			if (confirm(msg) == true) {
+// 				return true;
+// 			} else {
+// 				return false;
+// 			}
+// 		}
+     function submit() {
+			swal({
+					  title: "是否同意退票?",
+					  text: "申請將通過!",
+					  icon: "warning",
+					  buttons: true,
+					  dangerMode: true,
+					})
+					.then((orderOK) => {
+						  if (orderOK) {
+							  $("#submitform").submit();					
+						  } else {
+						    swal("操作已取消!");
+						  }
+						});
+	 		
+	 		}
 	</script>
 	  
 	  

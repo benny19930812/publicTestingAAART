@@ -66,6 +66,9 @@
 	<!-- table -->
 	<script type="text/javascript" charset="utf8"
 		src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+		
+		<!-- sweetAlert CDN -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 </html>
