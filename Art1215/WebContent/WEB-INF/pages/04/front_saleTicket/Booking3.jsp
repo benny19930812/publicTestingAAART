@@ -39,6 +39,11 @@ td {
 .price2 {
 	width: 200px;
 }
+
+body {
+	color: black;
+	font-size:18px;
+}
 </style>
 
 </head>

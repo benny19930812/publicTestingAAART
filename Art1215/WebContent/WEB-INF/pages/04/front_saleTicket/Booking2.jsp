@@ -53,6 +53,10 @@ td {
 form {
 	display: inline;
 }
+body {
+	color: black;
+	font-size:18px;
+}
 </style>
 
 </head>

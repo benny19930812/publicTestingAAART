@@ -126,7 +126,7 @@ width: 400px;
 				</tr>
 				<tr>
 					<td>圖片上傳</td>
-					<td><Input Type="File" Name="file" id="file"></td>
+					<td><Input Type="File" Name="file" id="file" ></td>
 				</tr>
 <!-- 				<tr> -->
 <!-- 					<td>圖片預覽</td> -->

@@ -37,6 +37,8 @@ import tw.group4._04_.back.cmsAct.model.ShowBean;
 import tw.group4._04_.back.cmsAct.model.ShowBean2;
 import tw.group4._04_.back.cmsAct.model.ShowBeanService;
 import tw.group4._04_.front.seat.model.SeatBean;
+import tw.group4._04_.front.seat.model.SeatBean2;
+import tw.group4._04_.front.seat.model.SeatBean3;
 import tw.group4._04_.front.seat.model.SeatBeanService;
 import tw.group4.util.Hibernate;
 
@@ -55,6 +57,10 @@ public class CrudCtrlCMS {
 	
 	@Autowired
 	private SeatBean seatbean;
+	@Autowired
+	private SeatBean2 seatbean2;
+	@Autowired
+	private SeatBean3 seatbean3;
 	@Autowired
 	private SeatBeanService seatBeanService;
 
@@ -373,10 +379,19 @@ public class CrudCtrlCMS {
 		
 		int actid=showBeanService.insert(showBean);
 		System.out.println(actid);
-		//新增圖片
+		//新增座位表資訊
 		seatbean.setaCT_NO(actid);
 		seatbean.setACT_TITLE(title);
+		seatbean.setSEATNUM(50);
+		seatbean2.setACT_NO(actid);
+		seatbean2.setACT_TITLE(title);
+		seatbean2.setSEATNUM(50);
+		seatbean3.setACT_NO(actid);
+		seatbean3.setACT_TITLE(title);
+		seatbean3.setSEATNUM(66);
 		seatBeanService.insert(seatbean);
+		seatBeanService.insert2(seatbean2);
+		seatBeanService.insert3(seatbean3);
 		System.out.println("已成功新增一筆");
 		
 		

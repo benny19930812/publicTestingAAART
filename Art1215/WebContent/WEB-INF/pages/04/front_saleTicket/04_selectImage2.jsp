@@ -114,8 +114,8 @@ body {
 <%-- 					<form method=GET action="<c:url value='/04/SearchTo.ctrl'/>"> --%>
 					<div class="switch-wrap d-flex justify-content-between">
 						<!--    模糊查詢功能 -->
-						<input type=TEXT name="searchString" class="single-input"placeholder="" id="search"> 
-						<input type=SUBMIT value="查詢" class="genric-btn primary-border small" id="searchbut">
+						<input type=TEXT name="searchString" class="single-input" id="search"> 
+						<input type=button value="查詢" class="genric-btn primary-border small" id="searchbut">
 					</div>
 <%-- 					</form> --%>
 					<br>
@@ -324,42 +324,42 @@ body {
 				</p>
 
 
-				<c:forEach items="${currentPage}" var="show" varStatus="idx">
 					<div class="container">
-						<div class="row">
+						<div class="row" id="row">
 
 							<!-- 					<div class="col-lg-4 event-left"> -->
-							<div class="col-lg-4  single-blog">
+<%-- 				<c:forEach items="${currentPage}" var="show" varStatus="idx"> --%>
+<!-- 							<div class="col-lg-4  single-blog"> -->
 
-								<div class="thumb">
-									<a href="<c:url value='/04/showDetail.ctrl?actid=${show.no}'/>">
-										<img style='display: block; width: 300px;'
-										src="data:image/jpg;base64,${show.photo}" class="actimg">
-									</a>
-								</div>
-							</div>
-							<div class="col-lg-8 event-left">
-								<div class="single-events">
-									<a href="<c:url value='/04/showDetail.ctrl?actid=${show.no}'/>"><h3>${show.title}</h3></a>
-									<h4>
-										<span>${show.startdate}~ ${show.enddate}</span>
-									</h4>
-									<p>${show.site}</p>
-									<p>${show.description}</p>
-									<div class="row justify-content-end">
-										<form method="GET"
-											action="<c:url value='/04/showDetail.ctrl'/>">
-											<Input type='hidden' name='actid' value='${show.no}'>
-											<input type=SUBMIT value="查看詳情"
-												class="primary-btn text-uppercase">
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br>
-				</c:forEach>
+<!-- 								<div class="thumb"> -->
+<%-- 									<a href="<c:url value='/04/showDetail.ctrl?actid=${show.no}'/>"> --%>
+<!-- 										<img style='display: block; width: 300px;' -->
+<%-- 										src="data:image/jpg;base64,${show.photo}" class="actimg"> --%>
+<!-- 									</a> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="col-lg-8 event-left"> -->
+<!-- 								<div class="single-events"> -->
+<%-- 									<a href="<c:url value='/04/showDetail.ctrl?actid=${show.no}'/>"><h3>${show.title}</h3></a> --%>
+<!-- 									<h4> -->
+<%-- 										<span>${show.startdate}~ ${show.enddate}</span> --%>
+<!-- 									</h4> -->
+<%-- 									<p>${show.site}</p> --%>
+<%-- 									<p>${show.description}</p> --%>
+<!-- 									<div class="row justify-content-end"> -->
+<%-- 										<form method="GET" --%>
+<%-- 											action="<c:url value='/04/showDetail.ctrl'/>"> --%>
+<%-- 											<Input type='hidden' name='actid' value='${show.no}'> --%>
+<!-- 											<input type=SUBMIT value="查看詳情" -->
+<!-- 												class="primary-btn text-uppercase"> -->
+<%-- 										</form> --%>
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 					<br> -->
+<%-- 				</c:forEach> --%>
 			</div>
 		</div>
 
@@ -392,9 +392,59 @@ body {
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		
-	</script>
+<script>	
+
+$("#searchbut").click(function(){
+	var searchString=$("#search").val();
+		 alert(searchString);
+   	 $.ajax({
+			type: "get",
+			url: "/Art/04/Searchajax",
+			contentType: "application/json",
+			dataType: "json",
+			data: {"searchString":searchString},
+			cache: false,
+			success: function(json) {
+				$.each(json, function( index, show ) {
+				$("#row").append(
+						"<div class='row'>"
+						+"<div class='col-lg-4  single-blog'>"
+						+"<div class='thumb'>"
+							+"<a href='<c:url value='/04/showDetail.ctrl?actid="+show.ACT_NO+"'/>'>"
+								+"<img style='display: block; width: 300px;'src='data:image/jpg;base64,"+show.PHOTOBASE64+"' class='actimg'>"
+							+"</a>"
+						+"</div>"
+					+"</div>"
+					+"<div class='col-lg-8 event-left'>"
+						+"<div class='single-events'>"
+							+"<a href='<c:url value='/04/showDetail.ctrl?actid="+show.ACT_NO+"'/>'><h3>"+show.ACT_TITLE+"</h3></a>"
+							+"<h4>"
+								+"<span>"+show.ACT_STARTDATE+"~"+show.ACT_ENDDATE+"</span>"
+							+"</h4>"
+							+"<p>"+show.ACT_LOCATION_NAME+"</p>"
+							+"<p>"+show.ACT_DESCRIPTION+"</p>"
+							+"<div class='row justify-content-end'>"
+								+"<form method='GET'action='<c:url value='/04/showDetail.ctrl'/>'>"
+									+"<Input type='hidden' name='actid' value='"+show.ACT_NO+"'>"
+									+"<input type=SUBMIT value='查看詳情' class='primary-btn text-uppercase'>"
+								+"</form>"
+							+"</div>"
+						+"</div>"
+					+"</div>"
+					+"<br>"
+				);
+					});
+								
+			},
+			error:  function() {
+				alert("failure");
+			}
+			});	
+
+
+});
+	
+</script>
 
 
 </body>

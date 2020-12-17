@@ -211,7 +211,9 @@
 						})
 						.then((orderOK) => {
 							  if (orderOK) {
-								window.location="<c:url value='/04/CMS/Delete.ctrl?actno="+actid+"&category="+category+"' />"; 
+								  swal("活動已刪除!", 
+									    	{icon: "success",});  
+								  setTimeout(function(){window.location="<c:url value='/04/CMS/Delete.ctrl?actno="+actid+"&category="+category+"' />"; },2000);
 								 			
 							  } else {
 							    swal("操作已取消!");

@@ -60,6 +60,7 @@ width:100px;
 }
 body {
 	color: black;
+	font-size:18px;
 }
 
 
@@ -96,7 +97,7 @@ body {
 				<!-- start -->
 				<div class="text-center bs-wizard-stepnum">Step 1</div>
 				<div class="progress">
-					<div class="progress-bar" style="width: 100%;"></div>
+					<div class="progress-bar" style="width: 0%;"></div>
 				</div>
 				<a href="" class="bs-wizard-dot"></a>
 				<div class="bs-wizard-info text-center">區域/張數</div>
@@ -106,7 +107,7 @@ body {
 				<!-- complete -->
 				<div class="text-center bs-wizard-stepnum">Step 2</div>
 				<div class="progress">
-					<div class="progress-bar" style="width: 50%;"></div>
+					<div class="progress-bar" style="width: 0%;"></div>
 				</div>
 				<a href="#" class="bs-wizard-dot"></a>
 				<div class="bs-wizard-info text-center">劃位</div>
@@ -179,7 +180,9 @@ body {
 							<td >$1000<br>$2000</td>
 							<td id="seatnum3">0</td>
 						</tr>
-					</table>					
+					</table>
+
+		<p id="actid"  style="display: none;">${sessionScope.actid}<p>					
 				</div>
 				<div class="col-sm-7">
 
@@ -188,7 +191,7 @@ body {
        				<a id="area3" class="area" href="#"></a>
 					<img src="<c:url value='/images/04/seatmap.jpg' />" border="0" usemap="#Map" alt="座位表" id="seatmap" class="map"   /> 
 				</div>
-
+		
 
 
 
@@ -215,15 +218,16 @@ $("#area3").mouseenter(function(){
 <script>	
 
 $(document).ready(function(){
+	var actid =$("#actid").text();
    	 $.ajax({
 			type: "get",
 			url: "/Art/04/seatnumSearch.ctrl",
 			contentType: "application/json",
 			dataType: "json",
-// 			data: data,
+			data: {"actno":actid},
 			cache: false,
 			success: function(json) {
-		    	$("#seatnum1").text(json.seatnum2)
+		    	$("#seatnum1").text(json.seatnum)
 		    	$("#seatnum2").text(json.seatnum2)
 		    	$("#seatnum3").text(json.seatnum3)			
 			},

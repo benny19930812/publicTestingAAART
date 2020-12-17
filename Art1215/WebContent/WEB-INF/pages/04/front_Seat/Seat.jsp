@@ -30,6 +30,11 @@
 	width: 100px;
 }
 
+body {
+	color: black;
+	font-size:18px;
+}
+
 
 </style>
 </head>

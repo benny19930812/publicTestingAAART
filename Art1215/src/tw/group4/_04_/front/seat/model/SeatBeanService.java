@@ -38,6 +38,12 @@ public class SeatBeanService {
 	public SeatBean insert(SeatBean seatBean) {
 		return seatBeanDAO.insert(seatBean);
 	}
+	public SeatBean2 insert2(SeatBean2 seatBean) {
+		return seatBeanDAO.insert2(seatBean);
+	}
+	public SeatBean3 insert3(SeatBean3 seatBean) {
+		return seatBeanDAO.insert3(seatBean);
+	}
 
 	// 查詢
 	public Map<String, Integer> select(int actno) {

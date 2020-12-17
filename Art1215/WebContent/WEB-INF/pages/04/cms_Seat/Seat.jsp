@@ -48,7 +48,7 @@
 
 
 <c:set var="seat" value="${requestScope.seat}" />
-<form name="order" action="<c:url value='/04/Cms/seatUpdate.ctrl'/>" method="POST">	
+<form name="order" action="<c:url value='/04/Cms/seatUpdate.ctrl'/>" method="POST" id="update">	
 	<p id="ticketnum" style="display:none">${sessionScope.shoppingcart.TICKET_NUM}</p>
 	<h1>座位表</h1>
 
@@ -209,9 +209,9 @@
 		</tr>
 	</table>
 	
-	<br><br><input type="submit" id="submit" class="btn btn-outline-info" value="修改座位" onclick="return update()">
 	 <Input type='hidden' name='category' value='${category}'>
 	</form>
+	<br><br><input type="button" id="submit" class="btn btn-outline-info" value="修改座位" onclick="return update()">
 </div>
 
 
@@ -259,14 +259,35 @@
  		});    	
 
 
- 	   function update() {
-			var msg = "確認是否更新?";
-			if (confirm(msg) == true) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+//  	   function update() {
+// 			var msg = "確認是否更新?";
+// 			if (confirm(msg) == true) {
+// 				return true;
+// 			} else {
+// 				return false;
+// 			}
+// 		}
+ 	   
+ 		function update() {
+			swal({
+					  title: "是否更新座位?",
+					  text: "座位將被更新!",
+					  icon: "warning",
+					  buttons: true,
+					  dangerMode: true,
+					})
+					.then((orderOK) => {
+						  if (orderOK) {
+							  swal("座位數量已更新!", 
+								    	{icon: "success",});  
+							  setTimeout(function(){$("#update").submit(); },3000);
+							 			
+						  } else {
+						    swal("操作已取消!");
+						  }
+						});
+	 		
+	 		}
 
 		</script> 
 

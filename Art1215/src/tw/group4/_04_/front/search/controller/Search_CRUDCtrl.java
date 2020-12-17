@@ -88,9 +88,9 @@ public class Search_CRUDCtrl {
 		}
 		else {
 			
+			return "/index/index";
 		}
 
-		return "04/front_saleTicket/04_select";
 	}
 	
 	
@@ -744,9 +744,9 @@ public class Search_CRUDCtrl {
 		@Hibernate
 		@ResponseBody
 		@RequestMapping(path = "/04/Searchajax", method = RequestMethod.GET)
-		public String processSearchajax(String page, Model model) {
+		public String processSearchajax(String searchString, Model model) {
 
-			String searchString="音樂";
+//			String searchString="音樂";
 			List<ShowBean> showList = showBeanService.findTEST(searchString);
 
 			for (ShowBean showBean : showList) {

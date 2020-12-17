@@ -59,6 +59,18 @@ public class SeatBeanDAO {
 			session.save(SeatBean);
 			return SeatBean;
 	}
+	public SeatBean2 insert2(SeatBean2 SeatBean) {
+		Session session = sessionFacory.getCurrentSession();
+		
+		session.save(SeatBean);
+		return SeatBean;
+	}
+	public SeatBean3 insert3(SeatBean3 SeatBean) {
+		Session session = sessionFacory.getCurrentSession();
+		
+		session.save(SeatBean);
+		return SeatBean;
+	}
 	
 	public  boolean   insert4Seat(String[] seats,String actno) {
 		String Seat1 = seats[0];

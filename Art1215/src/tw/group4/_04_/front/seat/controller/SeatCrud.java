@@ -143,8 +143,8 @@ public class SeatCrud {
 	@Hibernate
 	@RequestMapping(path = "/04/seatnumSearch.ctrl", method = RequestMethod.GET)
 	@ResponseBody
-	public String seatnumSearch(Model model, HttpSession session, String ticketcategry) {
-		Integer actno = 1;
+	public String seatnumSearch(Integer actno,Model model, HttpSession session, String ticketcategry) {
+//		Integer actno = 1;
 		HashMap<String, Integer> seatnumMap = new HashMap<String, Integer>();
 		Integer seatnum=seatBeanService.selectBean(actno).getSEATNUM();
 		Integer seatnum2=seatBeanService.selectBean2(actno).getSEAT2NUM();

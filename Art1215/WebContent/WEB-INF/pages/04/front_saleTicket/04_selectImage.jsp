@@ -31,13 +31,14 @@
 
 body {
 	color: black;
+	font-size:18px;
 }
 
 .col-sm-3 {
 	background-color: #c8c8b4;
 }
 
-.col-lg-4  single-blog {
+.col-lg-8 event-left{
 	background-color: #f5f5dc;
 }
 #search {
@@ -46,7 +47,7 @@ body {
 
 </style>
 </head>
-<body>
+<body >
 
 	<!-- start banner Area -->
 	<section class="banner-area relative" id="home">
@@ -114,32 +115,12 @@ body {
 					<form method=GET action="<c:url value='/04/SearchTo.ctrl'/>">
 					<div class="switch-wrap d-flex justify-content-between">
 						<!--    模糊查詢功能 -->
-						<input type=TEXT name="searchString" class="single-input"placeholder="" id="search"> 
+						<input type=TEXT name="searchString" class="single-input"placeholder="請輸入關鍵字" id="search"> 
 						<input type=SUBMIT value="查詢" class="genric-btn primary-border small" id="searchbut">
 					</div>
-					</form><br>
-					<h3 class="mb-30">條件篩選</h3>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>01. Sample Switch</p>
-						<div class="primary-switch">
-							<input type="checkbox" id="default-switch"> <label
-								for="default-switch"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>02. Primary Color Switch</p>
-						<div class="primary-switch">
-							<input type="checkbox" id="primary-switch" checked> <label
-								for="primary-switch"></label>
-						</div>
-					</div>
-					<div class="switch-wrap d-flex justify-content-between">
-						<p>03. Confirm Color Switch</p>
-						<div class="confirm-switch">
-							<input type="checkbox" id="confirm-switch" checked> <label
-								for="confirm-switch"></label>
-						</div>
-					</div>
+		
+					
+					
 				</div>
 				<div class="single-element-widget mt-30">
 					<h3 class="mb-30">活動分類</h3>
@@ -193,6 +174,30 @@ body {
 						</select>
 					</div>
 				</div>
+				</form>
+				<br>
+					<h3 class="mb-30">條件篩選</h3>
+					<div class="switch-wrap d-flex justify-content-between">
+						<p>01. Sample Switch</p>
+						<div class="primary-switch">
+							<input type="checkbox" id="default-switch"> <label
+								for="default-switch"></label>
+						</div>
+					</div>
+					<div class="switch-wrap d-flex justify-content-between">
+						<p>02. Primary Color Switch</p>
+						<div class="primary-switch">
+							<input type="checkbox" id="primary-switch" checked> <label
+								for="primary-switch"></label>
+						</div>
+					</div>
+					<div class="switch-wrap d-flex justify-content-between">
+						<p>03. Confirm Color Switch</p>
+						<div class="confirm-switch">
+							<input type="checkbox" id="confirm-switch" checked> <label
+								for="confirm-switch"></label>
+						</div>
+					</div>
 				<div class="single-element-widget mt-30">
 					<h3 class="mb-30">Checkboxes</h3>
 					<div class="switch-wrap d-flex justify-content-between">
@@ -323,8 +328,8 @@ body {
 				</p>
 
 
-				<c:forEach items="${currentPage}" var="show" varStatus="idx">
 					<div class="container">
+				<c:forEach items="${currentPage}" var="show" varStatus="idx">
 						<div class="row">
 
 							<!-- 					<div class="col-lg-4 event-left"> -->

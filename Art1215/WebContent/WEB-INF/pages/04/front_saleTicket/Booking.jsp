@@ -41,13 +41,16 @@ td {
 width: 100px;
 }
 .num{
-width: 230px;
+width: 260px;
 }
 .price{
 width: 100px;
 }
 
-
+body {
+	color: black;
+	font-size:18px;
+}
 
 </style>
 

@@ -41,6 +41,14 @@ td {
 .price2 {
 	width: 200px;
 }
+
+body {
+	color: black;
+	font-size:18px;
+}
+.flip{
+background-color: rgb(156, 194, 229)
+}
 </style>
 
 
@@ -143,8 +151,19 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
 				<br><br><input type="submit" class="genric-btn primary-border radius" value="購買">
 
 		</form>
-		
-		<!-- Start blog Area -->
+
+
+
+			<p class="flip">進場須知</p>
+			<div class="panel" style="display:none;">
+				<p>★ 均可入場，一人一票</p>
+			</div>
+			
+
+
+
+
+			<!-- Start blog Area -->
 			<section class="blog-area section-gap" id="blog">
 				<div class="container">
 					<h1 class="mb-10">相似活動</h1>
@@ -153,9 +172,15 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
 					</div>
 				</div>	
 			</section>
-			<!-- End blog Area -->
+		<!-- End blog Area -->
 		
-		
+<script> 
+$(document).ready(function(){
+$(".flip").click(function(){
+$(".panel").slideToggle("slow");
+});
+});
+</script>
 
 <script>	
 
@@ -177,7 +202,7 @@ $(document).ready(function(){
 				+"</div>"
 				+"<p>"+value.ACT_STARTDATE+"</p>"
 				+"<a href='<c:url value='/04/showDetail.ctrl?actid="+value.ACT_NO+"'/>'><h4>"+value.ACT_TITLE+"</h4></a>"
-				+"<p></p><div class='meta-bottom d-flex justify-content-between'><p><span class='lnr lnr-heart'></span> 15 Likes</p><p><span class='lnr lnr-bubble'></span> 02 則回應</p></div>"								
+// 				+"<p></p><div class='meta-bottom d-flex justify-content-between'><p><span class='lnr lnr-heart'></span> 15 Likes</p><p><span class='lnr lnr-bubble'></span> 02 則回應</p></div>"								
 				+"</div>");
 					});
 								

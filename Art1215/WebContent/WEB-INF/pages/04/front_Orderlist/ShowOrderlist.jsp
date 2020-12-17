@@ -13,6 +13,10 @@
 .do {
 	width: 200px;
 }
+body {
+	color: black;
+	font-size:18px;
+}}
 </style>
 </head>
 <body>
@@ -59,7 +63,7 @@
 						action="<c:url value='/04/OrderlistDetail.ctrl'/> " method="get">
 						<!-- 					傳送訂單資訊 -->
 						<td><input type=SUBMIT value="訂單詳細"
-							class="genric-btn success-border radius"></td> <Input
+							class="genric-btn success radius"></td> <Input
 							type='hidden' name='orderid' value='${orderlist.ORDERID}'>
 					</form>
 
@@ -80,7 +84,7 @@
 						<form id="submitform" name="order" action="<c:url value='/04/WriteIssueForm'/>" method="get">
 							<input type="hidden" name="issueId" value="${orderlist.ORDERID}" >
 						</form>
-						<button type="button" id="submit" class="genric-btn success-border radius" ">申請退票</button>
+						<button type="button" id="submit" class="genric-btn success radius" onclick="applyfor(${orderlist.ORDERID})">申請退票</button>
 					</td>
 
 
@@ -105,8 +109,8 @@
 			}
 		}
 		
-		$("#submit").click(function() {
-
+// 		$("#submit").click(function() {
+			function applyfor(issueId) {
 			swal({
 					  title: "是否申請退票票券?",
 					  text: "將填寫申請單!",
@@ -116,32 +120,16 @@
 					})
 					.then((orderOK) => {
 						  if (orderOK) {
-							  $("#submitform").submit();					
+								window.location="<c:url value='/04/WriteIssueForm?issueId="+issueId+"' />"; 
+
+// 							  $("#submitform").submit();					
 						  } else {
 						    swal("申請已取消!");
 						  }
 						});
 
-	 		});
+	 		};
 
-// $("#submit").click(function() {
-// 		var form = $(this).parents('form');
-// 		swal({
-// 				  title: "是否刪除票券?",
-// 				  text: "票券即將刪除!",
-// 				  icon: "warning",
-// 				  buttons: true,
-// 				  dangerMode: true,
-// 				})
-// 				.then((orderOK) => {
-// 					  if (orderOK) {
-// 					form.submit();					
-// 					  } else {
-// 					    swal("刪除已取消!");
-// 					  }
-// 					});
-
-//  		});
 	</script>
 
 

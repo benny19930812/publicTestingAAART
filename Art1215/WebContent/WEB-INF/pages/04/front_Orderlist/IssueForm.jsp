@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+body {
+	color: black;
+	font-size:18px;
+}
+</style>
 </head>
 <body>
 	<!-- start banner Area -->
@@ -63,8 +69,8 @@
 							onblur="this.placeholder = '請詳細描述您的問題'" required></textarea>
 					</div>
 				</form>
-					<button class="genric-btn primary-border small" type="button" id="submit" onclick="submit()">確認送出 </button>
-					<button class="genric-btn primary-border small" type="button" id="btn">一鍵完成 </button>
+					<button class="genric-btn success radius" type="button" id="submit" onclick="submit()">確認送出 </button>
+					<button class="genric-btn success radius" type="button" id="btn">一鍵完成 </button>
 			</div>
 		</div>
 	</div>
@@ -95,15 +101,18 @@
 function submit() {
  	$("input").prop("disabled",false);
 			swal({
-					  title: "是否申請退票票券?",
-					  text: "將填寫申請單!",
+					  title: "確定送出申請?",
+					  text: "申請將送出!",
 					  icon: "warning",
 					  buttons: true,
 					  dangerMode: true,
 					})
 					.then((orderOK) => {
 						  if (orderOK) {
-							  $("#submitform").submit();					
+							  swal("申請已送出!", 
+								    	{icon: "success",});
+							  setTimeout(function(){$("#submitform").submit(); },2000);
+				
 						  } else {
 						    swal("申請已取消!");
 						  }
