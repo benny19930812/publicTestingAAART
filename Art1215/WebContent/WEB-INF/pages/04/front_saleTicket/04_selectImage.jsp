@@ -38,9 +38,6 @@ body {
 	background-color: #c8c8b4;
 }
 
-.col-lg-8 event-left{
-	background-color: #f5f5dc;
-}
 #search {
 	width: 150px;	
 }
@@ -119,8 +116,6 @@ body {
 						<input type=SUBMIT value="查詢" class="genric-btn primary-border small" id="searchbut">
 					</div>
 		
-					
-					
 				</div>
 				<div class="single-element-widget mt-30">
 					<h3 class="mb-30">活動分類</h3>
@@ -283,33 +278,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			<div class="col-sm-9">
 
 
@@ -328,8 +296,8 @@ body {
 				</p>
 
 
-					<div class="container">
 				<c:forEach items="${currentPage}" var="show" varStatus="idx">
+					<div class="container">
 						<div class="row">
 
 							<!-- 					<div class="col-lg-4 event-left"> -->

@@ -278,8 +278,8 @@ public class ShowBeanDAO {
 		Session session = sessionFacory.getCurrentSession();
 		String queryString = "from ShowBean where ACT_TITLE like'%" + searchString + "%'";
 		Query query = session.createQuery(queryString);
-		query.setFirstResult(1);
-		query.setMaxResults(100);
+//		query.setFirstResult(1);
+//		query.setMaxResults(100);
 		return query.list();
 
 	}

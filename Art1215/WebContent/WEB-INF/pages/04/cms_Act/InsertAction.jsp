@@ -16,7 +16,7 @@ width: 400px;
 <%-- 	<jsp:include page="/fragment/top.jsp" /> --%>
 		<br>
 		<br>
-	<form method=POST action="<c:url value='/04/CMS/Insert.ctrl'/>" enctype="multipart/form-data">
+	<form method=POST  id="insertform" action="<c:url value='/04/CMS/Insert.ctrl'/>" enctype="multipart/form-data">
 
 		<div class="container">
 		<div class="form-group">
@@ -124,14 +124,14 @@ width: 400px;
 
 			</table>
 
-			<input type="submit" value="送出新增" name=""
-				class="btn btn-outline-info" id="" onclick="return insert()">
+		</form>
+			<input type="button" value="送出新增" name=""
+				class="btn btn-outline-info" id="" onclick="insert()">
 				
 			<input type="button" value="DEMO" name="" class="btn btn-outline-info" id="DEMO" >
-	</form>
 
 
-	</form>
+
 	</div>
 	</div>
 
@@ -147,14 +147,14 @@ width: 400px;
 				$("#enddate").val("2021-03-28");
 				$("#description").val("2021年即將邁入第十二屆的《大港開唱》，是每年三月於高雄舉辦的大型音樂祭典，受到全台灣及日本香港年輕觀眾的喜愛，近年已成為台灣最具指標性的大型戶外音樂祭活動。\n大港舉辦在高雄港邊，獨特的海港地景和人文風情，常勾起人生中各種酸甜苦辣的回憶。大港因此找來有著豐富人生歷程的知名藝人及業界前輩演出，或是與新一代的樂團或藝人一起合作，交融出出代之間的化學變化，往往成為當年度為人津津樂道的經典現場。歷年演出樂團的陣容集結了國內外實力堅強的藝人，包括茄子蛋、玖壹壹、草東沒有派對、9m88、Leo王、大象體操等等，每年近百組的演出藝人，搭配著意想不到的特別來賓做feat演出，每每都讓台下的樂迷驚喜連連，更是創造了南方港都風味的獨特回憶。");
 	});
-		function insert() {
-			var msg = "確認是否新增?";
-			if (confirm(msg) == true) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+// 		function insert() {
+// 			var msg = "確認是否新增?";
+// 			if (confirm(msg) == true) {
+// 				return true;
+// 			} else {
+// 				return false;
+// 			}
+// 		}
 
 		document.getElementById("startdate").onchange = function () {
 		    var input = document.getElementById("enddate");
@@ -169,6 +169,26 @@ width: 400px;
 			  };
 			  reader.readAsDataURL(file);
 			});
+		
+		function insert() {
+			swal({
+				  title: "是否新增活動?",
+				  text: "活動將新增!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((orderOK) => {
+					  if (orderOK) {
+					    swal("成功新增一筆活動!", 
+					    	{icon: "success",});
+				    	setTimeout(function(){ $("#insertform").submit(); },2000);
+					  } else {
+					    swal("操作已取消!");
+					  }
+					});
+		};
+		
 	</script>
 </body>
 </html>

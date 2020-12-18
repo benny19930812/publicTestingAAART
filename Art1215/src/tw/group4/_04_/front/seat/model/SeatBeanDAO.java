@@ -26,6 +26,8 @@ public class SeatBeanDAO {
 	private Shoppingcart shoppingcart;
 	@Autowired
 	private SeatBean seatBean;
+	@Autowired
+	private SeatBean2 seatBean2;
 
 //	public SeatBeanDAO() {
 //	
@@ -517,6 +519,126 @@ public class SeatBeanDAO {
 		session.update(seatBean);
 
 		return seatBean;
+	}
+	
+	
+	// 修改座位圖2
+	public SeatBean2 update2(
+			 Integer actno,
+			 Integer seatnum,
+			 Integer F1,
+			 Integer F2,
+			 Integer F3,
+			 Integer F4,
+			 Integer F5,
+			 Integer F6,
+			 Integer F7,
+			 Integer F8,
+			 Integer F9,
+			 Integer F10,
+			 Integer G1,
+			 Integer G2,
+			 Integer G3,
+			 Integer G4,
+			 Integer G5,
+			 Integer G6,
+			 Integer G7,
+			 Integer G8,
+			 Integer G9,
+			 Integer G10,
+			 Integer H1,
+			 Integer H2,
+			 Integer H3,
+			 Integer H4,
+			 Integer H5,
+			 Integer H6,
+			 Integer H7,
+			 Integer H8,
+			 Integer H9,
+			 Integer H10,
+			 Integer I1,
+			 Integer I2,
+			 Integer I3,
+			 Integer I4,
+			 Integer I5,
+			 Integer I6,
+			 Integer I7,
+			 Integer I8,
+			 Integer I9,
+			 Integer I10,
+			 Integer J1,
+			 Integer J2,
+			 Integer J3,
+			 Integer J4,
+			 Integer J5,
+			 Integer J6,
+			 Integer J7,
+			 Integer J8,
+			 Integer J9,
+			 Integer J10) {
+
+		Session session = sessionFacory.getCurrentSession();
+		seatBean2= session.get(SeatBean2.class, actno);
+		seatBean2.setSEATNUM(seatnum);
+		seatBean2.setF1(F1);
+		seatBean2.setF2(F2);
+		seatBean2.setF3(F3);
+		seatBean2.setF4(F4);
+		seatBean2.setF5(F5);
+		seatBean2.setF6(F6);
+		seatBean2.setF7(F7);
+		seatBean2.setF8(F8);
+		seatBean2.setF9(F9);
+		seatBean2.setF10(F10);
+		
+		seatBean2.setG1(G1);
+		seatBean2.setG2(G2);
+		seatBean2.setG3(G3);
+		seatBean2.setG4(G4);
+		seatBean2.setG5(G5);
+		seatBean2.setG6(G6);
+		seatBean2.setG7(G7);
+		seatBean2.setG8(G8);
+		seatBean2.setG9(G9);
+		seatBean2.setG10(G10);
+
+		seatBean2.setH1(H1);
+		seatBean2.setH2(H2);
+		seatBean2.setH3(H3);
+		seatBean2.setH4(H4);
+		seatBean2.setH5(H5);
+		seatBean2.setH6(H6);
+		seatBean2.setH7(H7);
+		seatBean2.setH8(H8);
+		seatBean2.setH9(H9);
+		seatBean2.setH10(H10);
+
+		seatBean2.setI1(I1);
+		seatBean2.setI2(I2);
+		seatBean2.setI3(I3);
+		seatBean2.setI4(I4);
+		seatBean2.setI5(I5);
+		seatBean2.setI6(I6);
+		seatBean2.setI7(I7);
+		seatBean2.setI8(I8);
+		seatBean2.setI9(I9);
+		seatBean2.setI10(I10);
+
+		seatBean2.setJ1(J1);
+		seatBean2.setJ2(J2);
+		seatBean2.setJ3(J3);
+		seatBean2.setJ4(J4);
+		seatBean2.setJ5(J5);
+		seatBean2.setJ6(J6);
+		seatBean2.setJ7(J7);
+		seatBean2.setJ8(J8);
+		seatBean2.setJ9(J9);
+		seatBean2.setJ10(J10);
+		
+		
+		session.update(seatBean2);
+
+		return seatBean2;
 	}
 	
 	public SeatBean updateSeatnum(

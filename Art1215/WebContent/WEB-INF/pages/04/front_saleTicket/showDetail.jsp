@@ -46,8 +46,15 @@ body {
 	color: black;
 	font-size:18px;
 }
+.all{
+/* 	background-color: #c8c8b4; */
+
+}
 .flip{
-background-color: rgb(156, 194, 229)
+background-color: rgb(156, 194, 229);
+}
+.table table-bordered{
+background-color: #FFFFFF;
 }
 </style>
 
@@ -73,19 +80,8 @@ background-color: rgb(156, 194, 229)
 	<!-- End banner Area -->
 
 <div class="container">
-
-<!-- You can use Open Graph tags to customize link previews.
-Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-<meta property="og:url"           content="http://localhost:8080/Art/04/showDetail.ctrl?actid=${actid}"  />
-<meta property="og:type"          content="website" />
-<meta property="og:title"         content="Your Website Title" />
-<meta property="og:description"   content="Your description" />
-<meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
-</head>
-<body>
-
-
-
+  <div class="all">
+ 
 		<form name="order" action="<c:url value='/04/seatmap'/>" method="get">
 <%-- 		<form name="order" action="<c:url value='/04/booking.ctrl'/>" method="get"> --%>
 
@@ -115,8 +111,9 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
 		<br><h4>節目簡介:</h4>
 		<P>${description}</P><br><br>
 		
-		
+		<div class="text-center">
 		<img style='display:block;width:800px;' src="data:image/jpg;base64,${photo}" >
+		</div>
 		
 		<br><br><iframe width="100%" height="250" frameborder="0" src="https://www.google.com/maps?q=${site}&output=embed"></iframe>
 
@@ -152,15 +149,12 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
 
 		</form>
 
-
-
-			<p class="flip">進場須知</p>
+			<br><br><p class="flip">進場須知</p>
 			<div class="panel" style="display:none;">
 				<p>★ 均可入場，一人一票</p>
 			</div>
-			
-
-
+</div>
+</div>
 
 
 			<!-- Start blog Area -->
@@ -168,7 +162,6 @@ Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
 				<div class="container">
 					<h1 class="mb-10">相似活動</h1>
 					<div class="row" id="likeact">
-
 					</div>
 				</div>	
 			</section>

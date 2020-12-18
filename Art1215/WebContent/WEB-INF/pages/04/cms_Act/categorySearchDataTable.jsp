@@ -204,7 +204,7 @@
 	function del(actid,category) {
 				swal({
 						  title: "是否刪除活動?",
-						  text: "活動將被刪除!",
+						  text: "刪除為不可逆，請謹慎操作!",
 						  icon: "warning",
 						  buttons: true,
 						  dangerMode: true,

@@ -191,7 +191,7 @@ body {
        				<a id="area3" class="area" href="#"></a>
 					<img src="<c:url value='/images/04/seatmap.jpg' />" border="0" usemap="#Map" alt="座位表" id="seatmap" class="map"   /> 
 				</div>
-		
+		</div>
 
 
 
