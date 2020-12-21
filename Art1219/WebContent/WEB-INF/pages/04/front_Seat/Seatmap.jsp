@@ -157,7 +157,7 @@ body {
 						</tr>
 						<tr class="trA">
 							<td style="background-color: rgb(156, 194, 229)"></td>
-							<td></td>
+							<td>前台區</td>
 							<td>全票<br>半票</td>
 							<td>50</td>
 							<td >$2000<br>$1000</td>
