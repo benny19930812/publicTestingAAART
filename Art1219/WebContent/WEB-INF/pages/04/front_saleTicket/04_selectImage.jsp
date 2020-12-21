@@ -188,7 +188,7 @@ body {
 				<br>
 				<div class="row justify-content-center">
 					<button name="category" type="submit" value=""
-						class="genric-btn primary radius">清除條件</button>
+						class="genric-btn primary radius" id="clear">清除條件</button>
 				</div><br><br>
 			</div>
 
@@ -281,7 +281,10 @@ body {
 		</div>
 	</div>
 	<script type="text/javascript">
-		
+		$("#clear").click(
+				function() {
+					$("#search").val("")				
+				});
 	</script>
 
 
